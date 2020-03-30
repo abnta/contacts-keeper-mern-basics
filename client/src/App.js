@@ -11,7 +11,15 @@ import About from "./components/pages/About";
 import Register from "./components/auth/register";
 import Login from "./components/auth/login";
 
+import PrivateRoute from './components/routing/privateRoute'
+
 import "./App.css";
+
+import setAuthToken from './utils/setAuthToken'
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token)
+}
 
 const App = () => {
   return (
@@ -24,7 +32,7 @@ const App = () => {
               <div className="container">
                 <Alert />
                 <Switch>
-                  <Route path="/" exact component={Home} />
+                  <PrivateRoute path="/" exact component={Home} />
                   <Route path="/about" exact component={About} />
                   <Route path="/register" exact component={Register} />
                   <Route path="/login" exact component={Login} />

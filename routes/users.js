@@ -50,7 +50,7 @@ router.post('/',[
             if (error) {
                 throw error
             }
-            res.json({token})
+            return res.json({token})
         })
 
     } catch (error) {
